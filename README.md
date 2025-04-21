@@ -8,6 +8,10 @@ if this works properly i think i will, in order:
 
 but i don't think it will work properly lol
 
+note: all of the style is happening in html bc the style.css got WAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY(coughs)YYYYYYYYYYYYYYYYYYYYYY too crowded last time and that was a nightmare.
+
+
+
 
 all of my sources according to what i used + where i used it lol
 
@@ -19,6 +23,24 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.behance.net%2Fgallery%2F92
 
 taskbar source:
 https://www.elevenforum.com/data/attachments/89/89380-f56b3c51e057996f139a57e878c2a029.jpg?hash=9Ws8UeBXmW
+
+file folder:
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F5242931-file-computer-folder-icon-isolated-on-white-background&psig=AOvVaw21Rkxz57ETtdOlgJlAkgT8&ust=1745308203495000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCNibxe3R6IwDFQAAAAAdAAAAABAE 
+^background removed w pixlr
+
+file:
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F5242931-file-computer-folder-icon-isolated-on-white-background&psig=AOvVaw21Rkxz57ETtdOlgJlAkgT8&ust=1745308203495000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCNibxe3R6IwDFQAAAAAdAAAAABAE 
+
+image file:
+https://i.sstatic.net/0dKeS.png
+
+
+
+
+
+
+
+
 
 
 

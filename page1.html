@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <style>
+
     html, body {
       height: 100%;
       margin: 0;
@@ -26,11 +27,40 @@
       z-index: 1;
     }
 
+    .icon {
+      position: absolute;
+      width: 60px; /* Adjust size as needed */
+      height: auto;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .icon1 {
+      top: 100px;
+      left: 50px;
+    }
+
+    .icon2 {
+      top: 200px;
+      left: 150px;
+    }
+
+    .icon3 {
+      bottom: 100px;
+      right: 50px;
+    }
+
+
+
   </style>
 </head>
 <body>
 
     <img src="taskbar.png" alt="Taskbar" class="taskbar" />
+
+    <img src="file.png" alt="Icon 1" class="icon icon1" />
+    <img src="folder.png" alt="Icon 2" class="icon icon2" />
+    <img src="image file.png" alt="Icon 3" class="icon icon3" />
+
 
 </body>
 </html>
