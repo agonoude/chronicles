@@ -58,7 +58,20 @@ function draw() {
 }
 
 function startTyping() {
-  currentIndex = (currentIndex + 1) % texts.length;
+  if (currentIndex === texts.length - 1 && !typing) {
+    window.location.href = 'page3.html'; // Change to your desired page
+    return;
+  }
+
+  // If typing is still happening, skip the animation and show full line instantly
+  if (typing) {
+    displayText = texts[currentIndex]; // instantly show full text
+    typing = false;
+    return;
+  }
+
+  // Otherwise, move to next message and start typing
+  currentIndex++;
   displayText = "";
   charIndex = 0;
   typing = true;
