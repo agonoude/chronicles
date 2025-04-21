@@ -5,35 +5,62 @@ let texts = [
   "awesome",
   "this is so fun"
 ];
+
 let currentIndex = 0;
+let button;
+let displayText = "";
+let charIndex = 0;
+let typing = false;
+let lastCharTime = 0;
+let typeSpeed = 50; // milliseconds between characters
+
+function preload() {
+  // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
+  comicFont = loadFont('COMIC.TTF');
+}
 
 function setup() {
-  canvas=createCanvas(600, 400);
-  canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
-  textAlign(CENTER, CENTER);
-  textSize(24);
+  createCanvas(600, 400);
+  textAlign(LEFT, TOP);
+  textSize(20);
+  textFont(comicFont);
+
+  // Create button
+  button = createButton('Next');
+  button.position(width - 75, height - 50);
+  button.mousePressed(startTyping);
+
+  startTyping(); // Start typing the first message
 }
 
 function draw() {
   background('black');
-  //text box drawn
+
+  // Draw the textbox at the bottom
   fill('rgb(71,70,70)');
   noStroke();
-  rect(width/2 - 200, height/2 - 50, 400, 100, 20); 
+  rect(20, height - 100, width - 40, 80, 20);
 
-//  text in the box
+  // Draw animated text
   fill('white');
-  noStroke();
-  text(texts[currentIndex], width/2, height/2);
-}
+  text(displayText, 40, height - 85);
 
-//spacebar controlling text --> will be a button on screen? maybe?
-function keyPressed() {
-  if (key === ' ') {
-    currentIndex++;
-    //resetting the loop --> kinda like an npc lol
-    if (currentIndex >= texts.length) {
-      currentIndex = 0;
+  // animated
+  if (typing && millis() - lastCharTime > typeSpeed) {
+    if (charIndex < texts[currentIndex].length) {
+      displayText += texts[currentIndex].charAt(charIndex);
+      charIndex++;
+      lastCharTime = millis();
+    } else {
+      typing = false; // done typing
     }
   }
+}
+
+function startTyping() {
+  currentIndex = (currentIndex + 1) % texts.length;
+  displayText = "";
+  charIndex = 0;
+  typing = true;
+  lastCharTime = millis();
 }

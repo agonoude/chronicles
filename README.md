@@ -51,7 +51,10 @@ https://i.sstatic.net/0dKeS.png
 
 
 
+// font sources
 
+comic sans:
+https://archive.org/details/ComicSansMSRegularBold/Comic%20Sans%20MS%20Bold.png 
 
 
 
