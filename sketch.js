@@ -8,7 +8,8 @@ let texts = [
 let currentIndex = 0;
 
 function setup() {
-  createCanvas(600, 400);
+  canvas=createCanvas(600, 400);
+  canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
   textAlign(CENTER, CENTER);
   textSize(24);
 }
