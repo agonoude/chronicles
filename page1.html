@@ -27,13 +27,24 @@
       z-index: 1;
     }
 
-    .icon {
+    .icon-container {
       position: absolute;
-      width: 60px; /* Adjust size as needed */
-      height: auto;
-      cursor: pointer;
+      width: 80px;
+      text-align: center;
+      color: white;
+      font-family: sans-serif;
+      font-size: 14px;
       z-index: 2;
     }
+
+    .icon-container img {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
     .icon1 {
       top: 100px;
       left: 50px;
@@ -57,9 +68,20 @@
 
     <img src="taskbar.png" alt="Taskbar" class="taskbar" />
 
-    <img src="file.png" alt="Icon 1" class="icon icon1" />
-    <img src="folder.png" alt="Icon 2" class="icon icon2" />
-    <img src="image file.png" alt="Icon 3" class="icon icon3" />
+    <div class="icon-container icon1">
+    <img src="file.png" alt="Icon 1" />
+    <div>My Files</div>
+  </div>
+
+  <div class="icon-container icon2">
+    <img src="fp;der.png" alt="Icon 2" />
+    <div>Game.exe</div>
+  </div>
+
+  <div class="icon-container icon3">
+    <img src="image file.png" alt="Icon 3" />
+    <div>Notes</div>
+  </div>
 
 
 </body>
