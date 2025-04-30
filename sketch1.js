@@ -25,9 +25,8 @@ function preload() {
 function setup() {
   let cnv = createCanvas(600, 400);
   cnv.parent('sketch-container');
-  cnv.style('position', 'absolute');
-  cnv.style('z-index', '1');
-  
+  // Remove position absolute here—let the container handle layout
+
   textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
@@ -35,21 +34,21 @@ function setup() {
   // Setup GIF
   JaredFront.parent('sketch-container');
   JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0'); // behind the canvas
+  JaredFront.style('z-index', '0');
   
-  setTimeout(() => {
+  // Wait for GIF to load before positioning
+  JaredFront.elt.onload = () => {
     JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2);
-  }, 100);
+  };
 
   // Create button
   button = createButton('Next');
   button.parent('sketch-container');
   button.style('position', 'absolute');
-  button.style('z-index', '2'); // on top
+  button.style('z-index', '2');
   button.position(width - 75, height - 50);
-  button.mousePressed(startTyping);
 
-  startTyping(); // Start typing the first message
+  startTyping();
 }
 
 function draw() {

@@ -13,10 +13,13 @@ let charIndex = 0;
 let typing = false;
 let lastCharTime = 0;
 let typeSpeed = 50; // milliseconds between characters
+let JaredFront;
 
 function preload() {
   // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
   comicFont = loadFont('assets/COMIC.TTF');
+  JaredFront = createImg('assets/jaredfront.gif');
+  JaredFront.hide();
 }
 
 function setup() {
