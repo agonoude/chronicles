@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>jared</title>
-    <style>
-      body{
-        background: black;
-        color: white;
-      }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="sketch-container" style="width: 800px; margin: auto; position: relative;">
-    <pre style="margin:auto; color:white">
-      |--------------------------------------------------------------------------------------------|
-      |                                                       |                                    |
-      |                                                       |           ___ _  _  _   _          |
-      |                                                       |  ''\    /  |  |\ | | \ / \ \    /''|
-      |                                                       |     \/\/  _|_ | \| |_/ \_/  \/\/   |
-      |         __                                           <a href="https://www.youtube.com/watch?v=WFsAon_TWPQ" style="text-decoration:none; color:white">{'}</a>                                   |
-      |    ,   //\\   _         ___  _  _  _ ,  _                              <a href="starrynight.html" style="text-decoration:none; color:white;">___________         |</a>
-      |    \_ //  \\ // _,       |  / \ |\/|   |_                             <a href="starrynight.html" style="text-decoration:none; color:white;">| *   |   * |        |</a>
-      |      \ \  // \\/--,      |  \_/ |  |    _|                            <a href="starrynight.html" style="text-decoration:none; color:white;">|  *  | *   |        |</a>
-      |     __\ \/ \ //---,       _     _      _   __                         <a href="starrynight.html" style="text-decoration:none; color:white;">|-----|-----|        |</a>
-      |    '  \\    //   <a href="https://www.youtube.com/watch?v=FzH8p8hhxLA" style="text-decoration:none; color:white">(_)</a>     |_ |_||_ |   |_  (__)                        <a href="starrynight.html" style="text-decoration:none; color:white;">| *   |*   *|        |</a>
-      |        |    /             _|| ||_ |__ |                  [,]          <a href="starrynight.html" style="text-decoration:none; color:white;">|_____|_____|        |</a>
-      |        | <a href="https://severance.wiki/tree#:~:text=The%20Tree%20is%20a%20reoccurring,tree%20approximately%20two%20years%20ago." style="text-decoration:none; color:white;">_</a> |                                                                               |
-      |        |<a href="https://severance.wiki/tree#:~:text=The%20Tree%20is%20a%20reoccurring,tree%20approximately%20two%20years%20ago." style="text-decoration:none; color:white;">(_)</a>|                 <a href="tomshelf.html" style="text-decoration:none; color:white;">|______|</a>                                                      |
-      |        |   |                                                                               |
-      |        |   |                                                                               |
-      |________|   |_______________________________________________________________________________|
-      |       /     \             _                                   _                            |
-      |         /\           \ / |_| \ /                              |_}\ /                       |
-      |         /\            |  | |  |                        ___    |_} |           _            |
-      |         /\                                             |  ___    _  _  _ |  | |            |
-      |        _       __         _____                        | /   | |/  |_ / \|  | |            |
-      |       | \ |   |  |  |\  |   |                        \_/ \__/| |   |_ \_/|   0             |
-      |       |_/ |   |--|  | \ |   |                                  ________________________    |
-      |       |   |__ |  |  |  \|   |           __           __       |                        |   |
-      |                                         | \ |   |   |  ' \ \  |<a href="https://youtu.be/P8a4iiOnzsc?si=g3oN-j93kXQPofYd"style="text-decoration:none; color:white">.-- . .-.. -.-. --- -- .</a>|   |
-      |                                         |_/ |   |   |  _ / /  |________________________|   |
-      |                                         | \  \_/    \__/                                   |
-      |                                                                                            |
-      |--------------------------------------------------------------------------------------------|
-</pre>   
+<head>
+  <meta charset="UTF-8" />
+  <title>jared</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-<script src="sketch3test.js"></script>
+    #sketch-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    pre {
+      color: white;
+      white-space: pre-wrap;
+      text-align: center;
+      max-width: 90vw;
+    }
 
-<br>
-<br>
-<br>
-</div>
-  </body>
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+  <div id="sketch-container"></div>
+
+  <!-- Put ASCII text art here -->
+  <pre>
+    |--------------------------------------------------------------------------------------------|
+    |                                                       |                                    |
+    |                                                       |           ___ _  _  _   _          |
+    |                                                       |  ''\    /  |  |\ | | \ / \ \    /''|
+    |                                                       |     \/\/  _|_ | \| |_/ \_/  \/\/   |
+    |         __                                           <a href="https://www.youtube.com/watch?v=WFsAon_TWPQ">{'}</a>                                   |
+    |    ,   //\\   _         ___  _  _  _ ,  _                              <a href="starrynight.html">___________         |</a>
+    |    \_ //  \\ // _,       |  / \ |\/|   |_                             <a href="starrynight.html">| *   |   * |        |</a>
+    |      \ \  // \\/--,      |  \_/ |  |    _|                            <a href="starrynight.html">|  *  | *   |        |</a>
+    |     __\ \/ \ //---,       _     _      _   __                         <a href="starrynight.html">|-----|-----|        |</a>
+    |    '  \\    //   <a href="https://www.youtube.com/watch?v=FzH8p8hhxLA">(_)</a>     |_ |_||_ |   |_  (__)                        <a href="starrynight.html">| *   |*   *|        |</a>
+    |        |    /             _|| ||_ |__ |                  [,]          <a href="starrynight.html">|_____|_____|        |</a>
+    |        | <a href="https://severance.wiki/tree">_</a> |                                                                               |
+    |        |<a href="https://severance.wiki/tree">(_)</a>|                 <a href="tomshelf.html">|______|</a>                                                      |
+    |        |   |                                                                               |
+    |        |   |                                                                               |
+    |________|   |_______________________________________________________________________________|
+    ...
+  </pre>
+
+  <script src="sketch3test.js"></script>
+</body>
 </html>

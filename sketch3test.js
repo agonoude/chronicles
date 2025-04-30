@@ -24,9 +24,8 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(windowWidth, windowHeight);
+  let cnv = createCanvas(800, 600); // Or any fixed size you want
   cnv.parent('sketch-container');
-  cnv.position(0, 0);
   cnv.style('pointer-events', 'none');
 
   textAlign(CENTER, CENTER);
