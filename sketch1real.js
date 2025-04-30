@@ -15,6 +15,7 @@ let typeSpeed = 50;
 let JaredFront;
 let comicFont;
 let jaredY = 80;
+let jaredLoaded = false;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
@@ -39,8 +40,8 @@ function setup() {
 
   JaredFront.elt.onload = () => {
     JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-
     setTimeout(() => {
+      jaredLoaded = true;
       positionJared();
     }, 0);
   };
@@ -51,7 +52,7 @@ function setup() {
 function draw() {
   clear();
 
-  if (!JaredFront) return;
+  if (!jaredLoaded) return; // Wait until image is fully loaded
 
   let jaredH = JaredFront.height;
   let boxMargin = 20;
