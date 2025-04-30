@@ -1,6 +1,6 @@
 let texts = [
   "jared test3",
-  "did it work",
+  "sighsighsighsighsighsighsigh",
   "maybe?",
   "okay",
   "i hope so"
@@ -41,10 +41,17 @@ function setup() {
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
   JaredFront.elt.onload = () => {
-      JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-      JaredFront.show();
-      JaredFront.position(width / 2 - JaredFront.width / 2+25, 80);
-  };
+    JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+    JaredFront.show();
+  
+    // Use .elt.getBoundingClientRect() to get actual rendered canvas position
+    let canvasBounds = cnv.elt.getBoundingClientRect();
+  
+    // Position Jared relative to canvas top-left
+    let jaredX = canvasBounds.left + width / 2 - JaredFront.width / 2 + 25;
+    let jaredY = canvasBounds.top + 80;
+  
+    JaredFront.position(jaredX, jaredY);};
 
   startTyping();
 }
