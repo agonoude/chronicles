@@ -1,6 +1,7 @@
 let texts = [
     "oh, wow! it worked!",
     "wait...what is that?",
+    "that's not a folder inside...",
     "'message to my j...'?",
     "...oh."
   ];
