@@ -2,7 +2,8 @@ let texts2 = [
   "jared test1",
   "yay!",
   "hmm, what to talk about... oo! why did ALANNA create me!",
-  "why did ALANNA create me? well, you see, there was a period of time where she didn't have her magical phone that i've never seen! (tom says it's linked to an 'interdimensional portal' or 'ip' as she calls it) that allows her to go through so many programs. one day i'll go through it, i swear!)",
+  "why did ALANNA create me? well, you see, there was a period of time where she didn't have her magical phone that i've never seen! (tom says it's linked to an 'interdimensional portal' or 'ip' as she calls it)...", 
+  "which allows her to go through so many programs. one day i'll go through it, i swear!)",
   "isn't that cool!?"
 ];
 let currentIndex = 0;
