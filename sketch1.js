@@ -64,7 +64,7 @@ function draw() {
   let boxHeight = 150;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
-  let boxY = jaredY + JaredFront.height + 50;
+  let boxY = jaredY + JaredFront.height + 100;
 
   fill('rgb(71,70,70)');
   noStroke();
