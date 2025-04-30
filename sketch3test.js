@@ -14,7 +14,7 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 275;
+let jaredY = 295;
 let jaredLoaded = false;
 
 function preload() {
@@ -60,7 +60,7 @@ function draw() {
   if (!jaredLoaded) return; // Wait until image is fully loaded
 
   let jaredH = JaredFront.height;
-  let boxMargin = 100;
+  let boxMargin = 125;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
   let boxWidth = 500;
