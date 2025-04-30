@@ -1,6 +1,6 @@
 let texts = [
   "jared test1",
-  "please god let this work properly please32",
+  "please god let this work properly pleasepretty33",
   "yay",
   "awesome",
   "this is so fun"
@@ -23,25 +23,32 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(600, 400);
-  cnv.parent('sketch-container');
+  function setup() {
+    let cnv = createCanvas(600, 400);
+    cnv.parent('sketch-container');
+  
+    textAlign(LEFT, TOP);
+    textSize(20);
+    textFont(comicFont);
+  
 
-  textAlign(LEFT, TOP);
-  textSize(20);
-  textFont(comicFont);
-
-  // Load and show Jared GIF
-  JaredFront.parent('sketch-container');
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
-  JaredFront.show();
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
-  JaredFront.elt.onload = () => {
-      JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-      JaredFront.show();
-      JaredFront.position(width / 2 - JaredFront.width / 2+25, 80);
-  };
+    JaredFront.parent('sketch-container');
+    JaredFront.style('position', 'absolute');
+    JaredFront.style('z-index', '0');
+    JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+    JaredFront.position(width / 2 - JaredFront.width / 2 + 25, 80);
+    JaredFront.show();
+  
+    // Button
+    button = createButton('Next');
+    button.parent('sketch-container');
+    button.style('position', 'absolute');
+    button.style('z-index', '10');
+    button.position(width - 75, height - 50);
+    button.mousePressed(startTyping);
+  
+    startTyping();
+  }  };
 
   // Create button (unchanged)
   button = createButton('Next');
