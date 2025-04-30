@@ -24,7 +24,7 @@ let texts = [
   }
   
   function setup() {
-    let cnv = createCanvas(500, 500);
+    let cnv = createCanvas(400, 300);
     cnv.parent('sketch-container');
     textAlign(CENTER, CENTER);
     textSize(16);
