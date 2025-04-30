@@ -1,4 +1,5 @@
 let texts3 = [
+  "crying as i write this because it's actually somewhat working and it took me so, so incredibly long to get here oh my god please",
   "you must be thinking, who is tom!! why, tom is my best friend! except he doesnt really call me his best friend.", 
   "he's just... kind of always been there.",
   "he actually doesn't really talk, but it's ok!",
