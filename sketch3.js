@@ -21,9 +21,10 @@ function preload() {
 
 function setup() {
   let cnv = createCanvas(800, 600);
-cnv.style('pointer-events', 'none');
-cnv.position(0, 0);
-clear();                             // Makes background transparent (instead of fill(0))
+  cnv.parent('sketch-container'); // attach canvas to the container
+  cnv.position(0, 0);
+  cnv.style('pointer-events', 'none'); // allow clicks to pass through
+  clear();                           
   textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
