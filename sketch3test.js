@@ -41,7 +41,7 @@ function setup() {
   JaredFront.show();
 
   JaredFront.elt.onload = () => {
-    let scale = 0.5;
+    let scale = 0.33;
     let natW = JaredFront.elt.naturalWidth;
     let natH = JaredFront.elt.naturalHeight;
     JaredFront.size(natW * scale, natH * scale);
