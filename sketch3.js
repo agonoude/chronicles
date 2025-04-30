@@ -20,7 +20,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 400);
+  let cnv = createCanvas(800, 600);
+cnv.style('pointer-events', 'none');
+cnv.position(0, 0);
+clear();                             // Makes background transparent (instead of fill(0))
   textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
