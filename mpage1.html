@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('assets/background2.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; 
+    }
+
+    .taskbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 1;
+    }
+
+    #window-container {
+        width: 400px;
+        height: 300px;
+        background: black;
+        position: absolute;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        top: 50px;
+      left: 450px;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
+    .icon-container {
+      position: absolute;
+      width: 80px;
+      text-align: center;
+      color: white;
+      font-family: sans-serif;
+      font-size: 14px;
+      z-index: 2;
+    }
+
+    .icon-container img {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .icon1 {
+      top: 200px;
+      left: 250px;
+    }
+
+    .icon2 {
+      top: 50px;
+      left: 50px;
+    }
+
+    .icon3 {
+      bottom: 100px;
+      right: 50px;
+    }
+
+    .icon4 {
+      top: 125px;
+      left: 50px;
+    }
+
+    .icon5 {
+      top: 200px;
+      left: 50px;
+    }
+
+    .icon6 {
+      top: 50px;
+      left: 125px;
+    }
+
+    .icon7 {
+      top: 125px;
+      left: 125px;
+    }
+
+    .icon8 {
+      top: 200px;
+      left: 125px;
+    }
+
+
+  </style>
+</head>
+<body>
+
+    <img src="assets/taskbar.png" alt="Taskbar" class="taskbar" />
+
+    <div class="icon-container icon1">
+      <a href="page1.html">
+        <img src="assets/file.png" alt="Icon 1" />
+      </a>
+      <div>jar.edxe</div>
+   </div>
+
+  <div class="icon-container icon2">
+    <img src="assets/folder.png" alt="Icon 2" />
+    <div>Downloads</div>
+  </div>
+
+  <div class="icon-container icon3">
+    <img src="assets/imagefile.png" alt="Icon 3" />
+    <div>t.png</div>
+  </div>
+
+  <div class="icon-container icon4">
+    <img src="assets/folder.png" alt="Icon 4" />
+    <div>Documents</div>
+  </div>
+
+  <div class="icon-container icon5">
+    <img src="assets/folder.png" alt="Icon 5" />
+    <div>Photos</div>
+  </div>
+
+  <div class="icon-container icon6">
+    <img src="assets/folder.png" alt="Icon 6" />
+    <div>Fun Stuff</div>
+  </div>
+
+  <div class="icon-container icon7">
+    <img src="assets/folder.png" alt="Icon 7" />
+    <div>Weird Stuff</div>
+  </div>
+
+  <div class="icon-container icon8">
+    <img src="assets/folder.png" alt="Icon 8" />
+    <div>Other</div>
+  </div>
+  <div id="window-container">
+    <div id="sketch-container"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="windowjared.js"></script>
+</body>
+
+
+</html>

@@ -21,6 +21,8 @@ function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
   JaredFront = createImg('assets/jaredfront.gif');
   JaredFront.hide(); // show it manually after setup
+  JaredFront.elt.onload = () => console.log("JaredFront load triggered");
+  JaredFront.elt.onerror = () => console.log("Image failed to load!");
 }
 
 function setup() {
