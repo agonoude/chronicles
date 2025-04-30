@@ -41,8 +41,17 @@ function setup() {
   JaredFront.elt.onload = () => {
     JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
     JaredFront.show();
-    JaredFront.position(width / 2 - JaredFront.width / 2 + 25, jaredY);
-    jaredH = JaredFront.height;
+  
+    // Wait a moment before positioning (let layout settle)
+    setTimeout(() => {
+      let canvasBounds = JaredFront.parent().elt.getBoundingClientRect();
+  
+      let jaredX = width / 2 - JaredFront.width / 2 + 25;
+      let jaredY = 80;
+  
+      // Set Jared's position relative to the parent container, not full page
+      JaredFront.position(jaredX, jaredY);
+    }, 0);
   };
 
   startTyping();

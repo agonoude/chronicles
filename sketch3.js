@@ -44,14 +44,17 @@ function setup() {
     JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
     JaredFront.show();
   
-    // Use .elt.getBoundingClientRect() to get actual rendered canvas position
-    let canvasBounds = cnv.elt.getBoundingClientRect();
+    // Wait a moment before positioning (let layout settle)
+    setTimeout(() => {
+      let canvasBounds = JaredFront.parent().elt.getBoundingClientRect();
   
-    // Position Jared relative to canvas top-left
-    let jaredX = canvasBounds.left + width / 2 - JaredFront.width / 2 + 25;
-    let jaredY = canvasBounds.top + 80;
+      let jaredX = width / 2 - JaredFront.width / 2 + 25;
+      let jaredY = 80;
   
-    JaredFront.position(jaredX, jaredY);};
+      // Set Jared's position relative to the parent container, not full page
+      JaredFront.position(jaredX, jaredY);
+    }, 0);
+  };
 
   startTyping();
 }
