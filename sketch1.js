@@ -61,10 +61,10 @@ function draw() {
 
   // Always draw the text box
   let boxMargin = 20;
-  let boxHeight = 100;
-  let boxWidth = 600;
+  let boxHeight = 300;
+  let boxWidth = 800;
   let boxX = width / 2 - boxWidth / 2;
-  let boxY = jaredY + JaredFront.height + 20; // Position box below the image
+  let boxY = jaredY + JaredFront.height + 50;
 
   fill('rgb(71,70,70)');
   noStroke();
