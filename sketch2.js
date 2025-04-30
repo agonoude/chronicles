@@ -1,13 +1,12 @@
 let texts = [
-  "jared test3",
-  "sighsighsighsighsighsighsigh",
+  "jared test3 copy???????????",
+  "sigh.",
   "maybe?",
   "okay",
   "i hope so"
 ];
 
 let currentIndex = 0;
-let button;
 let displayText = "";
 let charIndex = 0;
 let typing = false;
@@ -15,6 +14,8 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
+let jaredY = 80;
+let jaredLoaded = false;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
@@ -23,36 +24,31 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(800, 600);
-  cnv.parent('sketch-container');
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.parent(document.body);
   cnv.position(0, 0);
-  cnv.style('pointer-events', 'none');
+  cnv.style('position', 'absolute');
+  cnv.style('pointer-events', 'none');  
+  
+  JaredFront.parent(document.body);
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.show();
 
-  textAlign(LEFT, TOP);
+  textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
 
-  button = createButton('Next');
-  button.mousePressed(startTyping);
 
-  // Position the GIF after it's loaded
-  JaredFront.parent('sketch-container');
-  JaredFront.show();
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
   JaredFront.elt.onload = () => {
-    JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-    JaredFront.show();
-  
-    // Wait a moment before positioning (let layout settle)
+    let scale = 0.8;
+  let natW = JaredFront.elt.naturalWidth;
+  let natH = JaredFront.elt.naturalHeight;
+  JaredFront.size(natW * scale, natH * scale);
     setTimeout(() => {
-      let canvasBounds = JaredFront.parent().elt.getBoundingClientRect();
-  
-      let jaredX = width / 2 - JaredFront.width / 2 + 25;
-      let jaredY = 80;
-  
-      // Set Jared's position relative to the parent container, not full page
-      JaredFront.position(jaredX, jaredY);
+      jaredLoaded = true;
+      positionJared();
     }, 0);
   };
 
@@ -62,21 +58,22 @@ function setup() {
 function draw() {
   clear();
 
-  // Textbox
+  if (!jaredLoaded) return; // Wait until image is fully loaded
+
+  let jaredH = JaredFront.height;
+  let boxMargin = 20;
+  let boxY = jaredY + jaredH + boxMargin;
+  let boxHeight = 100;
+  let boxWidth = 600;
+  let boxX = width / 2 - boxWidth / 2;
+
   fill('rgb(71,70,70)');
   noStroke();
-  rect(20, height - 100, width - 40, 80, 20);
+  rect(boxX, boxY, boxWidth, boxHeight, 20);
 
-  // Text inside box
   fill('white');
-  text(displayText, 40, height - 85);
+  text(displayText, width / 2, boxY + boxHeight / 2);
 
-  // Reposition button relative to textbox
-  button.position(width - 100, height - 40);
-  button.style('position', 'absolute');
-  button.style('z-index', '1');
-
-  // Typing animation
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
@@ -85,6 +82,22 @@ function draw() {
     } else {
       typing = false;
     }
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  positionJared();
+}
+
+function positionJared() {
+  let jaredX = width / 2 - JaredFront.width / 2;
+  JaredFront.position(jaredX, jaredY);
+}
+
+function keyPressed() {
+  if (key === 't' || key === 'T') {
+    startTyping();
   }
 }
 

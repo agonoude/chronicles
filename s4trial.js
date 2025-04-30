@@ -25,21 +25,18 @@ function preload() {
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
-  cnv.parent(document.body);
+  cnv.parent('sketch-container');
   cnv.position(0, 0);
-  cnv.style('position', 'absolute');
-  cnv.style('pointer-events', 'none');  
-  
-  JaredFront.parent(document.body);
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
-  JaredFront.show();
+  cnv.style('pointer-events', 'none');
 
   textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
 
+  JaredFront.parent('sketch-container');
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.show();
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
@@ -103,7 +100,7 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'middle.html';
+    window.location.href = 'page2.html';
     return;
   }
 
