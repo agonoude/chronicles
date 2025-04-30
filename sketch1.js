@@ -58,14 +58,12 @@ function setup() {
 function draw() {
   clear();
 
-  if (!jaredLoaded) return; // Wait until image is fully loaded
-
-  let jaredH = JaredFront.height;
+  // Always draw the text box
   let boxMargin = 20;
-  let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
+  let boxY = height / 2 - boxHeight / 2; // Center the box
 
   fill('rgb(71,70,70)');
   noStroke();
@@ -74,6 +72,7 @@ function draw() {
   fill('white');
   text(displayText, width / 2, boxY + boxHeight / 2);
 
+  // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
@@ -83,7 +82,14 @@ function draw() {
       typing = false;
     }
   }
+
+  // If Jared's image has loaded, show it
+  if (jaredLoaded) {
+    let jaredH = JaredFront.height;
+    positionJared();
+  }
 }
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
