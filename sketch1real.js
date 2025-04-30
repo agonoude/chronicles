@@ -57,7 +57,7 @@ function draw() {
   let boxMargin = 20;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
-  let boxWidth = width * 0.8;
+  let boxWidth = let boxWidth = 600;;
   let boxX = width / 2 - boxWidth / 2;
 
   fill('rgb(71,70,70)');
