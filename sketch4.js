@@ -42,6 +42,7 @@ function setup() {
 
 
   JaredFront.elt.onload = () => {
+    console.log("JaredFront load triggered");
     let scale = 0.8;
   let natW = JaredFront.elt.naturalWidth;
   let natH = JaredFront.elt.naturalHeight;
@@ -56,6 +57,7 @@ function setup() {
 }
 
 function draw() {
+  console.log("drawing...");
   clear();
 
   if (!jaredLoaded) return; // Wait until image is fully loaded
