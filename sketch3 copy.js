@@ -1,13 +1,12 @@
 let texts = [
   "jared test3 copy???????????",
-  "sigh",
+  "man.",
   "maybe?",
   "okay",
   "i hope so"
 ];
 
 let currentIndex = 0;
-let button;
 let displayText = "";
 let charIndex = 0;
 let typing = false;
@@ -34,9 +33,6 @@ function setup() {
   textSize(20);
   textFont(comicFont);
 
-  button = createButton('Next');
-  button.mousePressed(startTyping);
-
   // Position the GIF after it's loaded
   JaredFront.parent('sketch-container');
   JaredFront.show();
@@ -45,44 +41,30 @@ function setup() {
   JaredFront.elt.onload = () => {
     JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
     JaredFront.show();
-  
     JaredFront.position(width / 2 - JaredFront.width / 2 + 25, jaredY);
-  
     jaredH = JaredFront.height;
   };
 
   startTyping();
 }
+
 function draw() {
   clear();
 
-  // Wait for Jared's height to be known
   if (jaredH === 0) return;
 
-  // Textbox placement
   let boxMargin = 20;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
   let boxX = 100;
   let boxWidth = width - 2 * boxX;
 
-  // Draw textbox
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
-  // Text inside textbox
   fill('white');
   text(displayText, boxX + 20, boxY + 20);
-
-  // Button inside bottom-right of textbox
-  let buttonWidth = 60;
-  let buttonHeight = 30;
-  let buttonX = boxX + boxWidth - buttonWidth - 20; // right padding
-  let buttonY = boxY + boxHeight - buttonHeight - 15; // bottom padding
-  button.position(buttonX, buttonY);
-  button.style('position', 'absolute');
-  button.style('z-index', '1');
 
   // Typing animation
   if (typing && millis() - lastCharTime > typeSpeed) {
@@ -96,8 +78,11 @@ function draw() {
   }
 }
 
-
-
+function keyPressed() {
+  if (key === 't' || key === 'T') {
+    startTyping();
+  }
+}
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
