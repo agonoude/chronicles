@@ -1,9 +1,11 @@
-let texts = [
-  "jared test3 copy???????????",
-  "sigh.",
-  "maybe?",
-  "okay",
-  "i hope so"
+let texts1 = [
+  "jared test1",
+  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'. if you'd like for me to move on to my next statement, please press t! :)",
+  "sorry about that. she has control over when i say things.",
+  "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
+  "would you like to accompany me?!",
+  "...pretty please?",
+  "...i'll take your silence as a yes!!!"
 ];
 
 let currentIndex = 0;
@@ -14,15 +16,13 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 180;
+let jaredY = 80;
 let jaredLoaded = false;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
   JaredFront = createImg('assets/jaredfront.gif');
   JaredFront.hide(); // show it manually after setup
-  JaredFront.elt.onload = () => console.log("JaredFront load triggered");
-  JaredFront.elt.onerror = () => console.log("Image failed to load!");
 }
 
 function setup() {
@@ -38,17 +38,16 @@ function setup() {
   JaredFront.style('z-index', '0');
   JaredFront.show();
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
   textSize(20);
   textFont(comicFont);
-
+  textWrap(WORD); // Enable word wrapping
 
   JaredFront.elt.onload = () => {
-    console.log("JaredFront load triggered");
     let scale = 0.8;
-  let natW = JaredFront.elt.naturalWidth;
-  let natH = JaredFront.elt.naturalHeight;
-  JaredFront.size(natW * scale, natH * scale);
+    let natW = JaredFront.elt.naturalWidth;
+    let natH = JaredFront.elt.naturalHeight;
+    JaredFront.size(natW * scale, natH * scale);
     setTimeout(() => {
       jaredLoaded = true;
       positionJared();
@@ -59,33 +58,38 @@ function setup() {
 }
 
 function draw() {
-  console.log("drawing...");
   clear();
 
-  if (!jaredLoaded) return; // Wait until image is fully loaded
-
-  let jaredH = JaredFront.height;
+  // Always draw the text box
   let boxMargin = 20;
-  let boxY = jaredY + jaredH + boxMargin;
-  let boxHeight = 100;
+  let boxHeight = 150;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
+  let boxY = jaredY + JaredFront.height + 100;
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  text(displayText, width / 2, boxY + boxHeight / 2);
+  // Draw the text inside the box, wrapping it within the box width
+  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
+  // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts[currentIndex].length) {
-      displayText += texts[currentIndex].charAt(charIndex);
+    if (charIndex < texts1[currentIndex].length) {
+      displayText += texts1[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
       typing = false;
     }
+  }
+
+  // If Jared's image has loaded, show it
+  if (jaredLoaded) {
+    let jaredH = JaredFront.height;
+    positionJared();
   }
 }
 
@@ -106,13 +110,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts.length - 1 && !typing) {
+  if (currentIndex === texts1.length - 1 && !typing) {
     window.location.href = 'middle.html';
     return;
   }
 
   if (typing) {
-    displayText = texts[currentIndex];
+    displayText = texts1[currentIndex];
     typing = false;
     return;
   }

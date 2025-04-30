@@ -4,7 +4,8 @@ let texts1 = [
   "sorry about that. she has control over when i say things.",
   "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
   "would you like to accompany me?!",
-  "...pretty please?"
+  "...pretty please?",
+  "...i'll take your silence as a yes!!!"
 ];
 
 let currentIndex = 0;

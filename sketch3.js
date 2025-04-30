@@ -1,8 +1,8 @@
 let texts3 = [
-  "who is tom, you say? why, tom is my best friend! except he doesnt really call me his best friend.", 
+  "you must be thinking, who is tom!! why, tom is my best friend! except he doesnt really call me his best friend.", 
   "he's just... kind of always been there.",
   "he actually doesn't really talk, but it's ok!",
-  "here, let me go get tom for you!1!"
+  "here, let me show you him! he's in our room right now!"
 ];
 
 let currentIndex = 0;
@@ -66,8 +66,8 @@ function draw() {
   text(displayText, width / 2, boxY + boxHeight / 2);
 
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts[currentIndex].length) {
-      displayText += texts[currentIndex].charAt(charIndex);
+    if (charIndex < texts3[currentIndex].length) {
+      displayText += texts3[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
@@ -83,13 +83,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts.length - 1 && !typing) {
+  if (currentIndex === texts3.length - 1 && !typing) {
     window.location.href = 'page4.html';
     return;
   }
 
   if (typing) {
-    displayText = texts[currentIndex];
+    displayText = texts3[currentIndex];
     typing = false;
     return;
   }
