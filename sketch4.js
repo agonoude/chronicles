@@ -14,7 +14,7 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 80;
+let jaredY = 180;
 let jaredLoaded = false;
 
 function preload() {
