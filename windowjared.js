@@ -100,7 +100,7 @@ let textsw = [
   
   function startTyping() {
     if (currentIndex === textsw.length - 1 && !typing) {
-      window.location.href = 'page2.html';
+      window.location.href = 'mpage1.html';
       return;
     }
   
