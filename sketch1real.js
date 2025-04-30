@@ -57,7 +57,7 @@ function draw() {
   let boxMargin = 20;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
-  let boxWidth = let boxWidth = 600;;
+  let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
 
   fill('rgb(71,70,70)');
@@ -96,7 +96,7 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html';
+    window.location.href = 'page2.html';
     return;
   }
 
