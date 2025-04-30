@@ -52,17 +52,21 @@ function setup() {
 function draw() {
   clear();
 
+  // Updated Textbox Layout
+  let boxHeight = 120;
+  let boxY = height - boxHeight - 20;
+
   // Textbox
   fill('rgb(71,70,70)');
   noStroke();
-  rect(20, height - 100, width - 40, 80, 20);
+  rect(20, boxY, width - 40, boxHeight, 20);
 
   // Text inside box
   fill('white');
-  text(displayText, 40, height - 85);
+  text(displayText, 40, boxY + 20);
 
   // Reposition button relative to textbox
-  button.position(width - 100, height - 40);
+  button.position(width - 100, boxY + boxHeight - 40);
   button.style('position', 'absolute');
   button.style('z-index', '1');
 
