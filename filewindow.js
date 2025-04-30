@@ -6,43 +6,19 @@ let texts = [
     "i hope so"
   ];
   
-  let currentIndex = 0;
-  let displayText = "";
-  let charIndex = 0;
-  let typing = false;
-  let lastCharTime = 0;
-  let typeSpeed = 50;
-  let JaredFront;
-  let comicFont;
-  let jaredY = 40;
-  let jaredLoaded = false;
-  
+  let bgImage;
+
   function preload() {
-    comicFont = loadFont('assets/COMIC.TTF');
-    JaredFront = createImg('assets/jaredfront.gif');
-    JaredFront.hide(); // Show manually later
+    bgImage = loadImage('assets/filefolder.jpg'); // Load the image during preload
   }
   
+  function draw() {
+    background(bgImage); // Set the background to the image
+  }
+
   function setup() {
     let cnv = createCanvas(400, 300);
     cnv.parent('sketch-container');
-    textAlign(CENTER, CENTER);
-    textSize(16);
-    textFont(comicFont);
-  
-    JaredFront.parent('sketch-container');
-    JaredFront.style('position', 'absolute');
-    JaredFront.style('z-index', '0');
-    JaredFront.show();
-  
-    // Ensure loading happens even if image is cached
-    if (JaredFront.elt.complete) {
-      handleJaredLoad();
-    } else {
-      JaredFront.elt.onload = handleJaredLoad;
-    }
-  
-    startTyping();
   }
 
 
