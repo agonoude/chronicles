@@ -27,6 +27,24 @@
       z-index: 1;
     }
 
+    #window-container {
+        width: 500px;
+        height: 500px;
+        background: black;
+        /*position: relative;*/
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        top: 50px;
+      left: 450px;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+      }
     .icon-container {
       position: absolute;
       width: 80px;
@@ -134,5 +152,14 @@
     <div>Other</div>
   </div>
 
+  <div id="window-container">
+    <div id="sketch-container"></div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="windowjared.js"></script>
 </body>
+
+
 </html>
