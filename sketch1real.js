@@ -39,7 +39,10 @@ function setup() {
   JaredFront.show();
 
   JaredFront.elt.onload = () => {
-    JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+    let scale = 0.8;
+  let natW = JaredFront.elt.naturalWidth;
+  let natH = JaredFront.elt.naturalHeight;
+  JaredFront.size(natW * scale, natH * scale);
     setTimeout(() => {
       jaredLoaded = true;
       positionJared();
