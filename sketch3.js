@@ -14,7 +14,6 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 275;
 let jaredLoaded = false;
 
 function preload() {
@@ -25,9 +24,9 @@ function preload() {
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
-  cnv.parent(document.body); // Add directly to body, not #sketch-container
+  cnv.parent(document.body);
   cnv.position(0, 0);
-  cnv.style('position', 'absolute'); // fixed = persistent overlay
+  cnv.style('position', 'fixed');
   cnv.style('z-index', '100');
   cnv.style('pointer-events', 'none');
 
@@ -36,32 +35,25 @@ function setup() {
   textFont(comicFont);
 
   JaredFront.parent(document.body);
-  JaredFront.style('position', 'absolute'); // fixed to stay on top
+  JaredFront.style('position', 'fixed'); // 👈 Fixed position to lock on screen
   JaredFront.style('z-index', '101');
+  JaredFront.style('width', '200px');
+  JaredFront.style('height', 'auto');
+  JaredFront.style('left', 'calc(50% - 100px)'); // 👈 Centered horizontally
+  JaredFront.style('top', '275px');             // 👈 Locked vertical position
   JaredFront.show();
 
-  JaredFront.elt.onload = () => {
-    let scale = 0.33;
-    let natW = JaredFront.elt.naturalWidth;
-    let natH = JaredFront.elt.naturalHeight;
-    JaredFront.size(natW * scale, natH * scale);
-    setTimeout(() => {
-      jaredLoaded = true;
-      positionJared();
-    }, 0);
-  };
-
+  jaredLoaded = true; // No need to wait for size
   startTyping();
 }
 
 function draw() {
   clear();
 
-  if (!jaredLoaded) return; // Wait until image is fully loaded
+  if (!jaredLoaded) return;
 
-  let jaredH = JaredFront.height;
   let boxMargin = 125;
-  let boxY = jaredY + jaredH + boxMargin;
+  let boxY = 275 + 200 + boxMargin; // 275px top + ~200px image height + margin
   let boxHeight = 100;
   let boxWidth = 500;
   let boxX = width / 2 - boxWidth / 2;
@@ -82,16 +74,6 @@ function draw() {
       typing = false;
     }
   }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  positionJared();
-}
-
-function positionJared() {
-  let jaredX = width / 2 - JaredFront.width / 2;
-  JaredFront.position(jaredX, jaredY);
 }
 
 function keyPressed() {
