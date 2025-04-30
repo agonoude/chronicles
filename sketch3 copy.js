@@ -15,6 +15,8 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
+let jaredY = 80;
+let jaredH = 0;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
@@ -41,9 +43,12 @@ function setup() {
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
   JaredFront.elt.onload = () => {
-      JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-      JaredFront.show();
-      JaredFront.position(width / 2 - JaredFront.width / 2+25, 80);
+    JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+    JaredFront.show();
+  
+    JaredFront.position(width / 2 - JaredFront.width / 2 + 25, jaredY);
+  
+    jaredH = JaredFront.height;
   };
 
   startTyping();
@@ -51,11 +56,10 @@ function setup() {
 function draw() {
   clear();
 
-  // Jared's known position
-  let jaredY = 80;
-  let jaredH = JaredFront.height;
+  // Wait for Jared's height to be known
+  if (jaredH === 0) return;
 
-  // Position textbox directly below Jared
+  // Textbox placement
   let boxMargin = 20;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
@@ -67,15 +71,15 @@ function draw() {
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
-  // Draw text with padding inside the textbox
+  // Text inside textbox
   fill('white');
   text(displayText, boxX + 20, boxY + 20);
 
-  // Place button inside bottom-right of the textbox
+  // Button inside bottom-right of textbox
   let buttonWidth = 60;
   let buttonHeight = 30;
-  let buttonX = boxX + boxWidth - buttonWidth - 20; // 20px padding from right
-  let buttonY = boxY + boxHeight - buttonHeight - 15; // 15px padding from bottom
+  let buttonX = boxX + boxWidth - buttonWidth - 20; // right padding
+  let buttonY = boxY + boxHeight - buttonHeight - 15; // bottom padding
   button.position(buttonX, buttonY);
   button.style('position', 'absolute');
   button.style('z-index', '1');
@@ -91,6 +95,7 @@ function draw() {
     }
   }
 }
+
 
 
 
