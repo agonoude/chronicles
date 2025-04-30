@@ -75,8 +75,8 @@ function draw() {
 
   // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts2[currentIndex].length) {
-      displayText += texts2[currentIndex].charAt(charIndex);
+    if (charIndex < texts3[currentIndex].length) {
+      displayText += texts3[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
@@ -108,13 +108,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts2.length - 1 && !typing) {
+  if (currentIndex === texts3.length - 1 && !typing) {
     window.location.href = 'page4.html';
     return;
   }
 
   if (typing) {
-    displayText = texts2[currentIndex];
+    displayText = texts3[currentIndex];
     typing = false;
     return;
   }
