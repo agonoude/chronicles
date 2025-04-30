@@ -1,11 +1,9 @@
-let texts1 = [
-  "jared test1",
-  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'. if you'd like for me to move on to my next statement, please press t! :)",
-  "sorry about that. she has control over when i say things.",
-  "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
-  "would you like to accompany me?!",
-  "...pretty please?",
-  "...i'll take your silence as a yes!!!"
+let texts3 = [
+  "crying as i write this because it's actually somewhat working and it took me so, so incredibly long to get here oh my god please",
+  "you must be thinking, who is tom!! why, tom is my best friend! except he doesnt really call me his best friend.", 
+  "he's just... kind of always been there.",
+  "he actually doesn't really talk, but it's ok!",
+  "here, let me show you him! he's in our room right now!"
 ];
 
 let currentIndex = 0;
@@ -16,7 +14,6 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 80;
 let jaredLoaded = false;
 
 function preload() {
@@ -29,78 +26,55 @@ function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent(document.body);
   cnv.position(0, 0);
-  cnv.style('position', 'absolute');
-  cnv.style('pointer-events', 'none');  
-  
-  JaredFront.parent(document.body);
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
-  JaredFront.show();
+  cnv.style('position', 'fixed');
+  cnv.style('z-index', '100');
+  cnv.style('pointer-events', 'none');
 
-  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
+  textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
-  textWrap(WORD); // Enable word wrapping
 
-  JaredFront.elt.onload = () => {
-    let scale = 0.8;
-    let natW = JaredFront.elt.naturalWidth;
-    let natH = JaredFront.elt.naturalHeight;
-    JaredFront.size(natW * scale, natH * scale);
-    setTimeout(() => {
-      jaredLoaded = true;
-      positionJared();
-    }, 0);
-  };
+  JaredFront.parent(document.body);
+  JaredFront.style('position', 'fixed'); // 👈 Fixed position to lock on screen
+  JaredFront.style('z-index', '101');
+  JaredFront.style('width', '200px');
+  JaredFront.style('height', 'auto');
+  JaredFront.style('left', 'calc(50% - 100px)'); // 👈 Centered horizontally
 
+  jaredLoaded = true; // No need to wait for size
   startTyping();
 }
 
 function draw() {
   clear();
 
-  // Always draw the text box
-  let boxMargin = 20;
-  let boxHeight = 150;
-  let boxWidth = 600;
+  if (!jaredLoaded) return;
+
+  let boxMargin = 125;
+  let boxY = (windowHeight * 0.5) + 75; // Position box in the center of the window (adjusted for margins)
+  let boxHeight = 100;
+  let boxWidth = 500;
   let boxX = width / 2 - boxWidth / 2;
-  let boxY = jaredY + JaredFront.height + 100;
+
+  // Adjust Jared's position dynamically based on window height
+  JaredFront.style('top', (windowHeight * 0.3) + 'px'); // 30% of the window height
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  // Draw the text inside the box, wrapping it within the box width
-  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
+  text(displayText, width / 2, boxY + boxHeight / 2);
 
-  // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts1[currentIndex].length) {
-      displayText += texts1[currentIndex].charAt(charIndex);
+    if (charIndex < texts3[currentIndex].length) {
+      displayText += texts3[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
       typing = false;
     }
   }
-
-  // If Jared's image has loaded, show it
-  if (jaredLoaded) {
-    let jaredH = JaredFront.height;
-    positionJared();
-  }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  positionJared();
-}
-
-function positionJared() {
-  let jaredX = width / 2 - JaredFront.width / 2;
-  JaredFront.position(jaredX, jaredY);
 }
 
 function keyPressed() {
@@ -110,13 +84,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts1.length - 1 && !typing) {
-    window.location.href = 'middle.html';
+  if (currentIndex === texts3.length - 1 && !typing) {
+    window.location.href = 'page4.html';
     return;
   }
 
   if (typing) {
-    displayText = texts1[currentIndex];
+    displayText = texts3[currentIndex];
     typing = false;
     return;
   }
