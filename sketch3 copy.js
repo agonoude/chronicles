@@ -1,6 +1,6 @@
 let texts = [
   "jared test3 copy???????????",
-  "did it work maybe???????????????",
+  "did it work PLEASEEEEEEEEEEEEEEE",
   "maybe?",
   "okay",
   "i hope so"
@@ -52,21 +52,21 @@ function setup() {
 function draw() {
   clear();
 
-  // Updated Textbox Layout
-  let boxHeight = 120;
-  let boxY = height - boxHeight - 20;
+  // Keep textbox low but make sure it's not off-screen
+  let boxY = height - 120;
+  let boxHeight = 100;
 
-  // Textbox
+  // Draw textbox
   fill('rgb(71,70,70)');
   noStroke();
   rect(20, boxY, width - 40, boxHeight, 20);
 
-  // Text inside box
+  // Draw text inside the box with padding
   fill('white');
-  text(displayText, 40, boxY + 20);
+  text(displayText, 40, boxY + 15); // Padding from top of textbox
 
-  // Reposition button relative to textbox
-  button.position(width - 100, boxY + boxHeight - 40);
+  // Move the button to bottom right inside the textbox
+  button.position(width - 100, boxY + boxHeight - 40); // 40px up from bottom of box
   button.style('position', 'absolute');
   button.style('z-index', '1');
 
@@ -81,6 +81,7 @@ function draw() {
     }
   }
 }
+
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
