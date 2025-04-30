@@ -1,76 +1,115 @@
 let texts = [
-  "jared test2",
-  "did it work",
+  "jared test3 copy???????????",
+  "sigh.",
   "maybe?",
   "okay",
   "i hope so"
 ];
 
 let currentIndex = 0;
-let button;
 let displayText = "";
 let charIndex = 0;
 let typing = false;
 let lastCharTime = 0;
-let typeSpeed = 50; // milliseconds between characters
+let typeSpeed = 50;
+let JaredFront;
+let comicFont;
+let jaredY = 80;
+let jaredLoaded = false;
 
 function preload() {
-  // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
   comicFont = loadFont('assets/COMIC.TTF');
+  JaredFront = createImg('assets/jaredfront.gif');
+  JaredFront.hide(); // show it manually after setup
 }
 
 function setup() {
-  createCanvas(600, 400);
-  textAlign(LEFT, TOP);
+  let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.parent('sketch-container');
+  cnv.position(0, 0);
+  cnv.style('pointer-events', 'none');
+
+  textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
 
-  // Create button
-  button = createButton('Next');
-  button.position(width - 100, height - 200);
-  button.mousePressed(startTyping);
+  JaredFront.parent('sketch-container');
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.show();
 
-  startTyping(); // Start typing the first message
+  JaredFront.elt.onload = () => {
+    let scale = 0.8;
+  let natW = JaredFront.elt.naturalWidth;
+  let natH = JaredFront.elt.naturalHeight;
+  JaredFront.size(natW * scale, natH * scale);
+    setTimeout(() => {
+      jaredLoaded = true;
+      positionJared();
+    }, 0);
+  };
+
+  startTyping();
 }
 
 function draw() {
-  background('black');
+  clear();
 
-  // Draw the textbox at the bottom
+  if (!jaredLoaded) return; // Wait until image is fully loaded
+
+  let jaredH = JaredFront.height;
+  let boxMargin = 20;
+  let boxY = jaredY + jaredH + boxMargin;
+  let boxHeight = 100;
+  let boxWidth = 600;
+  let boxX = width / 2 - boxWidth / 2;
+
   fill('rgb(71,70,70)');
   noStroke();
-  rect(20, height - 100, width - 40, 80, 20);
+  rect(boxX, boxY, boxWidth, boxHeight, 20);
 
-  // Draw animated text
   fill('white');
-  text(displayText, 40, height - 85);
+  text(displayText, width / 2, boxY + boxHeight / 2);
 
-  // animated
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
-      typing = false; // done typing
+      typing = false;
     }
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  positionJared();
+}
+
+function positionJared() {
+  let jaredX = width / 2 - JaredFront.width / 2;
+  JaredFront.position(jaredX, jaredY);
+}
+
+function keyPressed() {
+  if (key === 't' || key === 'T') {
+    startTyping();
   }
 }
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html'; // Change to your desired page
+    window.location.href = 'page2.html';
     return;
   }
 
-  // If typing is still happening, skip the animation and show full line instantly
   if (typing) {
-    displayText = texts[currentIndex]; // instantly show full text
+    displayText = texts[currentIndex];
     typing = false;
     return;
   }
 
-  // Otherwise, move to next message and start typing
   currentIndex++;
   displayText = "";
   charIndex = 0;
