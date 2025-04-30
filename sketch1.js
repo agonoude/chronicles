@@ -14,6 +14,7 @@ let typing = false;
 let lastCharTime = 0;
 let typeSpeed = 50; // milliseconds between characters
 let JaredFront;
+let gifLoaded = false;
 
 function preload() {
   // Loading Comic Sans font and GIF
@@ -38,14 +39,14 @@ function setup() {
   
   // Wait for GIF to load before positioning
   JaredFront.elt.onload = () => {
-    JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2);
+    gifLoaded = true;
+    JaredFront.show();
   };
-
   // Create button
   button = createButton('Next');
   button.parent('sketch-container');
   button.style('position', 'absolute');
-  button.style('z-index', '2');
+  button.style('z-index', '10');
   button.position(width - 75, height - 50);
 
   startTyping();
@@ -53,6 +54,11 @@ function setup() {
 
 function draw() {
   background('black');
+
+  if (gifLoaded) {
+    JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2 - 50);
+  }
+
 
   // Draw the textbox at the bottom
   fill('rgb(71,70,70)');
