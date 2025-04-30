@@ -60,7 +60,7 @@ function draw() {
   if (!jaredLoaded) return; // Wait until image is fully loaded
 
   let jaredH = JaredFront.height;
-  let boxMargin = 250;
+  let boxMargin = 100;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
   let boxWidth = 600;
