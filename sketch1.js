@@ -18,6 +18,8 @@ let comicFont;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
+  JaredFront = createImg('assets/jaredfront.gif');
+  JaredFront.hide(); // show it manually after setup
 }
 
 function setup() {
@@ -29,12 +31,17 @@ function setup() {
   textFont(comicFont);
 
   // Load and show Jared GIF
-  JaredFront = createImg('assets/jaredfront.gif');
   JaredFront.parent('sketch-container');
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
-  JaredFront.size(150, 150); // Resize Jared
-  JaredFront.show(); // Just in case
+  JaredFront.show();
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.elt.onload = () => {
+      JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+      JaredFront.show();
+      JaredFront.position(width / 2 - JaredFront.width / 2+25, 80);
+  };
 
   // Create button (unchanged)
   button = createButton('Next');
@@ -49,9 +56,6 @@ function setup() {
 
 function draw() {
   background('black');
-
-
-  JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2 - 50);
 
   // Textbox
   fill('rgb(71,70,70)');
