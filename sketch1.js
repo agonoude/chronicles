@@ -19,7 +19,7 @@ function preload() {
   // Loading Comic Sans font and GIF
   comicFont = loadFont('assets/COMIC.TTF');
   JaredFront = createImg('assets/jaredfront.gif');
-  JaredFront.hide();
+  //JaredFront.hide();
 }
 
 function setup() {
