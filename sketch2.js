@@ -27,7 +27,7 @@ function setup() {
 
   // Create button
   button = createButton('Next');
-  button.position(width - 100, height - 100);
+  button.position(width - 100, height - 200);
   button.mousePressed(startTyping);
 
   startTyping(); // Start typing the first message
