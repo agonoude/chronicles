@@ -1,9 +1,9 @@
-let texts = [
-  "jared test3 copy???????????",
-  "sigh.",
-  "maybe?",
-  "okay",
-  "i hope so"
+let texts2 = [
+  "jared test1",
+  "yay!",
+  "hmm, what to talk about... oo! why did ALANNA create me!",
+  "why did ALANNA create me? well, you see, there was a period of time where she didn't have her magical phone that i've never seen! (tom says it's linked to an 'interdimensional portal' or 'ip' as she calls it) that allows her to go through so many programs. one day i'll go through it, i swear!)",
+  "isn't that cool!?"
 ];
 
 let currentIndex = 0;
@@ -58,14 +58,12 @@ function setup() {
 function draw() {
   clear();
 
-  if (!jaredLoaded) return; // Wait until image is fully loaded
-
-  let jaredH = JaredFront.height;
+  // Always draw the text box
   let boxMargin = 20;
-  let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
+  let boxY = height / 2 - boxHeight / 2; // Center the box
 
   fill('rgb(71,70,70)');
   noStroke();
@@ -74,16 +72,24 @@ function draw() {
   fill('white');
   text(displayText, width / 2, boxY + boxHeight / 2);
 
+  // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts[currentIndex].length) {
-      displayText += texts[currentIndex].charAt(charIndex);
+    if (charIndex < texts2[currentIndex].length) {
+      displayText += texts2[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
       typing = false;
     }
   }
+
+  // If Jared's image has loaded, show it
+  if (jaredLoaded) {
+    let jaredH = JaredFront.height;
+    positionJared();
+  }
 }
+
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
@@ -102,13 +108,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html';
+  if (currentIndex === texts2.length - 1 && !typing) {
+    window.location.href = 'page2.html';
     return;
   }
 
   if (typing) {
-    displayText = texts[currentIndex];
+    displayText = texts2[currentIndex];
     typing = false;
     return;
   }

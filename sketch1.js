@@ -1,9 +1,9 @@
-let texts = [
-  "jared test3 copy???????????",
-  "sigh.",
-  "maybe?",
-  "okay",
-  "i hope so"
+let texts1 = [
+  "jared test1",
+  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'",
+  "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
+  "would you like to accompany me?!",
+  "...pretty please?"
 ];
 
 let currentIndex = 0;
@@ -74,8 +74,8 @@ function draw() {
 
   // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts[currentIndex].length) {
-      displayText += texts[currentIndex].charAt(charIndex);
+    if (charIndex < texts1[currentIndex].length) {
+      displayText += texts1[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
@@ -108,13 +108,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts.length - 1 && !typing) {
+  if (currentIndex === texts1.length - 1 && !typing) {
     window.location.href = 'page2.html';
     return;
   }
 
   if (typing) {
-    displayText = texts[currentIndex];
+    displayText = texts1[currentIndex];
     typing = false;
     return;
   }
