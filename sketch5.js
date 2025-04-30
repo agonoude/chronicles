@@ -1,11 +1,12 @@
-let texts1 = [
-  "jared test1",
-  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'. if you'd like for me to move on to my next statement, please press t! :)",
-  "sorry about that. she has control over when i say things.",
-  "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
-  "would you like to accompany me?!",
-  "...pretty please?",
-  "...i'll take your silence as a yes!!!"
+let texts5 = [
+  "jared test5",
+  "i don't know why i talk so often about leaving this place...",
+  "the only way it's possible is if alanna were to let me out...",
+  "wait.",
+  "wait one second.",
+  "how did you get here?",
+  "wait. YOU can help me get out!!!!!!!!. here, just minimize this window and we can get to the homescreen!!!", 
+  "oh my goodness!!!"
 ];
 
 let currentIndex = 0;
@@ -38,10 +39,10 @@ function setup() {
   JaredFront.style('z-index', '0');
   JaredFront.show();
 
-  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
+  textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
-  textWrap(WORD); // Enable word wrapping
+  textWrap(WORD); //
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
@@ -77,8 +78,8 @@ function draw() {
 
   // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts1[currentIndex].length) {
-      displayText += texts1[currentIndex].charAt(charIndex);
+    if (charIndex < texts5[currentIndex].length) {
+      displayText += texts5[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
@@ -110,13 +111,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts1.length - 1 && !typing) {
+  if (currentIndex === texts5.length - 1 && !typing) {
     window.location.href = 'middle.html';
     return;
   }
 
   if (typing) {
-    displayText = texts1[currentIndex];
+    displayText = texts5[currentIndex];
     typing = false;
     return;
   }

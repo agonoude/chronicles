@@ -4,7 +4,7 @@ let texts4 = [
   "i designed it all by myself! do you like it?! :D",
   "...why don't you talk back to me? :(",
   "oh well! i can talk for the both of us!",
-  "anyways, let's leave jared be for now! :)"
+  "anyways, let's leave tom be for now! :)"
 ];
 
 let currentIndex = 0;
@@ -31,9 +31,11 @@ function setup() {
   cnv.style('z-index', '100');
   cnv.style('pointer-events', 'none');
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
+  textWrap(WORD); //
+
 
   JaredFront.parent(document.body);
   JaredFront.style('position', 'fixed'); // 👈 Fixed position to lock on screen
@@ -65,7 +67,7 @@ function draw() {
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  text(displayText, width / 2, boxY + boxHeight / 2);
+  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts3[currentIndex].length) {

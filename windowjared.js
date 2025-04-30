@@ -1,9 +1,13 @@
-let texts = [
-    "jared test3 copy???????????",
-    "sigh.",
-    "maybe?",
-    "okay",
-    "i hope so"
+let textsw = [
+    "jared test window",
+    "oh my goodness we are free!!!!!",
+    "look at this animation!! how cool is that!!",
+    "gosh, was it always like that??",
+    "i wish i could have come out here sooner",
+    "alright, well, anyways, i think it's time for us to try to—",
+    "WOAH!!",
+    "are those folders??!!!!!",
+    "omg click one!! see if you can open one!!!"
   ];
   
   let currentIndex = 0;
@@ -73,8 +77,8 @@ let texts = [
     text(displayText, width / 2, boxY + boxHeight / 2);
   
     if (typing && millis() - lastCharTime > typeSpeed) {
-      if (charIndex < texts[currentIndex].length) {
-        displayText += texts[currentIndex].charAt(charIndex);
+      if (charIndex < textsw[currentIndex].length) {
+        displayText += textsw[currentIndex].charAt(charIndex);
         charIndex++;
         lastCharTime = millis();
       } else {
@@ -95,13 +99,13 @@ let texts = [
   }
   
   function startTyping() {
-    if (currentIndex === texts.length - 1 && !typing) {
+    if (currentIndex === textsw.length - 1 && !typing) {
       window.location.href = 'page2.html';
       return;
     }
   
     if (typing) {
-      displayText = texts[currentIndex];
+      displayText = textsw[currentIndex];
       typing = false;
       return;
     }
