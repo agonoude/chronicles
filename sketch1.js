@@ -25,18 +25,22 @@ function preload() {
 
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
-  cnv.parent('sketch-container');
+  cnv.parent(document.body);
+  JaredFront.parent(document.body);
   cnv.position(0, 0);
-  cnv.style('pointer-events', 'none');
+  cnv.style('position', 'absolute');
+  cnv.style('pointer-events', 'none');  
+  
+  JaredFront.parent(document.body);
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.show();
 
   textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
 
-  JaredFront.parent('sketch-container');
-  JaredFront.style('position', 'absolute');
-  JaredFront.style('z-index', '0');
-  JaredFront.show();
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
