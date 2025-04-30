@@ -40,8 +40,6 @@ function setup() {
   JaredFront.style('width', '200px');
   JaredFront.style('height', 'auto');
   JaredFront.style('left', 'calc(50% - 100px)'); // 👈 Centered horizontally
-  JaredFront.style('top', '275px');             // 👈 Locked vertical position
-  JaredFront.show();
 
   jaredLoaded = true; // No need to wait for size
   startTyping();
@@ -53,10 +51,13 @@ function draw() {
   if (!jaredLoaded) return;
 
   let boxMargin = 125;
-  let boxY = 275 + 200 + boxMargin; // 275px top + ~200px image height + margin
+  let boxY = (windowHeight * 0.5) + 75; // Position box in the center of the window (adjusted for margins)
   let boxHeight = 100;
   let boxWidth = 500;
   let boxX = width / 2 - boxWidth / 2;
+
+  // Adjust Jared's position dynamically based on window height
+  JaredFront.style('top', (windowHeight * 0.3) + 'px'); // 30% of the window height
 
   fill('rgb(71,70,70)');
   noStroke();
