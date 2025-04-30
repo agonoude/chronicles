@@ -1,15 +1,3 @@
-//local storage variable for jared's opinion of the player lol
-if (localStorage.getItem('relationshipScore') === null) {
-  localStorage.setItem('relationshipScore', 0);
-}
-
-
-
-
-
-
-
-
 let texts = [
   "jared test1",
   "hoi",
