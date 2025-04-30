@@ -1,9 +1,8 @@
-let texts = [
-  "jared test3 copy???????????",
-  "sigh.",
-  "maybe?",
-  "okay",
-  "i hope so"
+let texts3 = [
+  "who is tom, you say? why, tom is my best friend! except he doesnt really call me his best friend.", 
+  "he's just... kind of always been there.",
+  "he actually doesn't really talk, but it's ok!",
+  "here, let me go get tom for you!1!"
 ];
 
 let currentIndex = 0;
