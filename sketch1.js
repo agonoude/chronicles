@@ -1,6 +1,6 @@
 let texts = [
   "jared test1",
-  "hoi",
+  "please god let this work properly please please please please please please please",
   "yay",
   "awesome",
   "this is so fun"

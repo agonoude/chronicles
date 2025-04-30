@@ -12,72 +12,82 @@ let displayText = "";
 let charIndex = 0;
 let typing = false;
 let lastCharTime = 0;
-let typeSpeed = 50; // milliseconds between characters
+let typeSpeed = 50;
 let JaredFront;
+let comicFont;
 
 function preload() {
-  // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
   comicFont = loadFont('assets/COMIC.TTF');
   JaredFront = createImg('assets/jaredfront.gif');
-  JaredFront.hide();
+  JaredFront.hide(); // show it manually after setup
 }
 
 function setup() {
   let cnv = createCanvas(800, 600);
-  cnv.parent('sketch-container'); // attach canvas to the container
+  cnv.parent('sketch-container');
   cnv.position(0, 0);
-  cnv.style('pointer-events', 'none'); // allow clicks to pass through
-  clear();                           
+  cnv.style('pointer-events', 'none');
+
   textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
 
-  // Create button
   button = createButton('Next');
-  button.position(width - 75, height - 50);
   button.mousePressed(startTyping);
 
-  startTyping(); // Start typing the first message
+  // Position the GIF after it's loaded
+  JaredFront.parent('sketch-container');
+  JaredFront.show();
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.elt.onload = () => {
+    JaredFront.position(width / 2 - JaredFront.width / 2, 40);
+  };
+
+  startTyping();
 }
 
 function draw() {
   clear();
 
-  // Draw the textbox at the bottom
+  // Textbox
   fill('rgb(71,70,70)');
   noStroke();
   rect(20, height - 100, width - 40, 80, 20);
 
-  // Draw animated text
+  // Text inside box
   fill('white');
   text(displayText, 40, height - 85);
 
-  // animated
+  // Reposition button relative to textbox
+  button.position(width - 100, height - 40);
+  button.style('position', 'absolute');
+  button.style('z-index', '1');
+
+  // Typing animation
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
-      typing = false; // done typing
+      typing = false;
     }
   }
 }
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html'; // Change to your desired page
+    window.location.href = 'page3.html';
     return;
   }
 
-  // If typing is still happening, skip the animation and show full line instantly
   if (typing) {
-    displayText = texts[currentIndex]; // instantly show full text
+    displayText = texts[currentIndex];
     typing = false;
     return;
   }
 
-  // Otherwise, move to next message and start typing
   currentIndex++;
   displayText = "";
   charIndex = 0;
