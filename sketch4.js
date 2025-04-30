@@ -1,9 +1,10 @@
-let texts3 = [
-  "crying as i write this because it's actually somewhat working and it took me so, so incredibly long to get here oh my god please",
-  "you must be thinking, who is tom!! why, tom is my best friend! except he doesnt really call me his best friend.", 
-  "he's just... kind of always been there.",
-  "he actually doesn't really talk, but it's ok!",
-  "here, let me show you him! he's in our room right now!"
+let texts4 = [
+  "sorry if this is less good than my og piece about jared—this was mainly about js integration bc eventually i will probably make a cute little website focused on just jared :)",
+  "tom's everything I want to be when I get outta this place! hey, wait, let me show you around!",
+  "i designed it all by myself! do you like it?! :D",
+  "...why don't you talk back to me? :(",
+  "oh well! i can talk for the both of us!",
+  "anyways, let's leave jared be for now! :)"
 ];
 
 let currentIndex = 0;

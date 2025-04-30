@@ -14,6 +14,7 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
+let jaredY = 80;
 let jaredLoaded = false;
 
 function preload() {
@@ -26,55 +27,78 @@ function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent(document.body);
   cnv.position(0, 0);
-  cnv.style('position', 'fixed');
-  cnv.style('z-index', '100');
-  cnv.style('pointer-events', 'none');
+  cnv.style('position', 'absolute');
+  cnv.style('pointer-events', 'none');  
+  
+  JaredFront.parent(document.body);
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('position', 'absolute');
+  JaredFront.style('z-index', '0');
+  JaredFront.show();
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
   textSize(20);
   textFont(comicFont);
+  textWrap(WORD); // Enable word wrapping
 
-  JaredFront.parent(document.body);
-  JaredFront.style('position', 'fixed'); // 👈 Fixed position to lock on screen
-  JaredFront.style('z-index', '101');
-  JaredFront.style('width', '200px');
-  JaredFront.style('height', 'auto');
-  JaredFront.style('left', 'calc(50% - 100px)'); // 👈 Centered horizontally
+  JaredFront.elt.onload = () => {
+    let scale = 0.8;
+    let natW = JaredFront.elt.naturalWidth;
+    let natH = JaredFront.elt.naturalHeight;
+    JaredFront.size(natW * scale, natH * scale);
+    setTimeout(() => {
+      jaredLoaded = true;
+      positionJared();
+    }, 0);
+  };
 
-  jaredLoaded = true; // No need to wait for size
   startTyping();
 }
 
 function draw() {
   clear();
 
-  if (!jaredLoaded) return;
-
-  let boxMargin = 125;
-  let boxY = (windowHeight * 0.5) + 75; // Position box in the center of the window (adjusted for margins)
-  let boxHeight = 100;
-  let boxWidth = 500;
+  // Always draw the text box
+  let boxMargin = 20;
+  let boxHeight = 150;
+  let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
-
-  // Adjust Jared's position dynamically based on window height
-  JaredFront.style('top', (windowHeight * 0.3) + 'px'); // 30% of the window height
+  let boxY = jaredY + JaredFront.height + 100;
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  text(displayText, width / 2, boxY + boxHeight / 2);
+  // Draw the text inside the box, wrapping it within the box width
+  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
+  // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts3[currentIndex].length) {
-      displayText += texts3[currentIndex].charAt(charIndex);
+    if (charIndex < texts2[currentIndex].length) {
+      displayText += texts2[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
       typing = false;
     }
   }
+
+  // If Jared's image has loaded, show it
+  if (jaredLoaded) {
+    let jaredH = JaredFront.height;
+    positionJared();
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  positionJared();
+}
+
+function positionJared() {
+  let jaredX = width / 2 - JaredFront.width / 2;
+  JaredFront.position(jaredX, jaredY);
 }
 
 function keyPressed() {
@@ -84,13 +108,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts3.length - 1 && !typing) {
-    window.location.href = 'page4.html';
+  if (currentIndex === texts2.length - 1 && !typing) {
+    window.location.href = 'page3.html';
     return;
   }
 
   if (typing) {
-    displayText = texts3[currentIndex];
+    displayText = texts2[currentIndex];
     typing = false;
     return;
   }
