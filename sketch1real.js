@@ -15,7 +15,6 @@ let typeSpeed = 50;
 let JaredFront;
 let comicFont;
 let jaredY = 80;
-let jaredH = 0;
 
 function preload() {
   comicFont = loadFont('assets/COMIC.TTF');
@@ -24,33 +23,25 @@ function preload() {
 }
 
 function setup() {
-  let cnv = createCanvas(800, 600);
+  let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent('sketch-container');
   cnv.position(0, 0);
   cnv.style('pointer-events', 'none');
 
-  textAlign(LEFT, TOP);
+  textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
 
-  // Position the GIF after it's loaded
   JaredFront.parent('sketch-container');
-  JaredFront.show();
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
+  JaredFront.show();
+
   JaredFront.elt.onload = () => {
     JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
-    JaredFront.show();
-  
-    // Wait a moment before positioning (let layout settle)
+
     setTimeout(() => {
-      let canvasBounds = JaredFront.parent().elt.getBoundingClientRect();
-  
-      let jaredX = width / 2 - JaredFront.width / 2 + 25;
-      let jaredY = 80;
-  
-      // Set Jared's position relative to the parent container, not full page
-      JaredFront.position(jaredX, jaredY);
+      positionJared();
     }, 0);
   };
 
@@ -60,22 +51,22 @@ function setup() {
 function draw() {
   clear();
 
-  if (jaredH === 0) return;
+  if (!JaredFront) return;
 
+  let jaredH = JaredFront.height;
   let boxMargin = 20;
   let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
-  let boxX = 100;
-  let boxWidth = width - 2 * boxX;
+  let boxWidth = width * 0.8;
+  let boxX = width / 2 - boxWidth / 2;
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  text(displayText, boxX + 20, boxY + 20);
+  text(displayText, width / 2, boxY + boxHeight / 2);
 
-  // Typing animation
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
@@ -87,6 +78,16 @@ function draw() {
   }
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  positionJared();
+}
+
+function positionJared() {
+  let jaredX = width / 2 - JaredFront.width / 2;
+  JaredFront.position(jaredX, jaredY);
+}
+
 function keyPressed() {
   if (key === 't' || key === 'T') {
     startTyping();
@@ -95,18 +96,16 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html'; // Change to your desired page
+    window.location.href = 'page3.html';
     return;
   }
 
-  // If typing is still happening, skip the animation and show full line instantly
   if (typing) {
-    displayText = texts[currentIndex]; // instantly show full text
+    displayText = texts[currentIndex];
     typing = false;
     return;
   }
 
-  // Otherwise, move to next message and start typing
   currentIndex++;
   displayText = "";
   charIndex = 0;
