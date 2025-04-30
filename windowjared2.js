@@ -1,9 +1,8 @@
 let texts = [
-    "jared test3 copy???????????",
-    "sigh.",
-    "maybe?",
-    "okay",
-    "i hope so"
+    "oh, wow! it worked!",
+    "wait...what is that?",
+    "'message to my j...'?",
+    "...oh."
   ];
   
   let currentIndex = 0;
@@ -96,7 +95,7 @@ let texts = [
   
   function startTyping() {
     if (currentIndex === texts.length - 1 && !typing) {
-      window.location.href = 'page2.html';
+      window.location.href = 'index.html';
       return;
     }
   
