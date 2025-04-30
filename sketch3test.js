@@ -41,7 +41,7 @@ function setup() {
   JaredFront.show();
 
   JaredFront.elt.onload = () => {
-    let scale = 0.33;
+    let scale = 0.55;
     let natW = JaredFront.elt.naturalWidth;
     let natH = JaredFront.elt.naturalHeight;
     JaredFront.size(natW * scale, natH * scale);
@@ -62,8 +62,8 @@ function draw() {
   let jaredH = JaredFront.height;
   let boxMargin = 100;
   let boxY = jaredY + jaredH + boxMargin;
-  let boxHeight = 120;
-  let boxWidth = 600;
+  let boxHeight = 100;
+  let boxWidth = 500;
   let boxX = width / 2 - boxWidth / 2;
 
   fill('rgb(71,70,70)');
