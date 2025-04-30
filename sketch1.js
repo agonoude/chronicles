@@ -61,8 +61,8 @@ function draw() {
 
   // Always draw the text box
   let boxMargin = 20;
-  let boxHeight = 300;
-  let boxWidth = 800;
+  let boxHeight = 150;
+  let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
   let boxY = jaredY + JaredFront.height + 50;
 
