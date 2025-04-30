@@ -37,10 +37,10 @@ function setup() {
   JaredFront.style('z-index', '0');
   JaredFront.show();
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
   textSize(20);
   textFont(comicFont);
-  textWrap(WORD);
+  textWrap(WORD); // Enable word wrapping
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
@@ -64,15 +64,15 @@ function draw() {
   let boxHeight = 100;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
-  let boxY = height / 2 - boxHeight / 2; // Center the box
+  let boxY = jaredY + JaredFront.height + 20; // Position box below the image
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  // Draw the text inside the box
-  text(displayText, width / 2, boxY + boxHeight / 2);
+  // Draw the text inside the box, wrapping it within the box width
+  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
   // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
