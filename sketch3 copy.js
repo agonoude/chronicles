@@ -1,6 +1,6 @@
 let texts = [
   "jared test3 copy???????????",
-  "did it work PLEASEEEEEEEEEEEEEEE",
+  "did it work ????maybeidkwe will see",
   "maybe?",
   "okay",
   "i hope so"
@@ -52,21 +52,33 @@ function setup() {
 function draw() {
   clear();
 
-  // Keep textbox low but make sure it's not off-screen
-  let boxY = height - 120;
+  // Only proceed if Jared has finished loading
+  if (!JaredFront.elt.complete) return;
+
+  // Get Jared's position and size
+  let jaredX = JaredFront.position().x;
+  let jaredY = JaredFront.position().y;
+  let jaredH = JaredFront.height;
+
+  // Position textbox just below Jared
+  let boxMargin = 20;
+  let boxY = jaredY + jaredH + boxMargin;
   let boxHeight = 100;
+  let boxWidth = width - 40;
 
   // Draw textbox
   fill('rgb(71,70,70)');
   noStroke();
-  rect(20, boxY, width - 40, boxHeight, 20);
+  rect(20, boxY, boxWidth, boxHeight, 20);
 
-  // Draw text inside the box with padding
+  // Text inside box with padding
   fill('white');
-  text(displayText, 40, boxY + 15); // Padding from top of textbox
+  text(displayText, 40, boxY + 15);
 
-  // Move the button to bottom right inside the textbox
-  button.position(width - 100, boxY + boxHeight - 40); // 40px up from bottom of box
+  // Position the button inside the textbox's bottom-right corner
+  let buttonX = 20 + boxWidth - 80; // 80 = button width allowance
+  let buttonY = boxY + boxHeight - 35; // Padding from bottom
+  button.position(buttonX, buttonY);
   button.style('position', 'absolute');
   button.style('z-index', '1');
 
@@ -81,6 +93,7 @@ function draw() {
     }
   }
 }
+
 
 
 function startTyping() {
