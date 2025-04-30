@@ -16,7 +16,7 @@ let typeSpeed = 50; // milliseconds between characters
 
 function preload() {
   // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
-  comicFont = loadFont('COMIC.TTF');
+  comicFont = loadFont('assets/COMIC.TTF');
 }
 
 function setup() {
