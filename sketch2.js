@@ -5,7 +5,6 @@ let texts2 = [
   "why did ALANNA create me? well, you see, there was a period of time where she didn't have her magical phone that i've never seen! (tom says it's linked to an 'interdimensional portal' or 'ip' as she calls it) that allows her to go through so many programs. one day i'll go through it, i swear!)",
   "isn't that cool!?"
 ];
-
 let currentIndex = 0;
 let displayText = "";
 let charIndex = 0;
@@ -36,16 +35,16 @@ function setup() {
   JaredFront.style('z-index', '0');
   JaredFront.show();
 
-  textAlign(CENTER, CENTER);
+  textAlign(LEFT, TOP); // Adjust text alignment to start from the left and top
   textSize(20);
   textFont(comicFont);
-
+  textWrap(WORD); // Enable word wrapping
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
-  let natW = JaredFront.elt.naturalWidth;
-  let natH = JaredFront.elt.naturalHeight;
-  JaredFront.size(natW * scale, natH * scale);
+    let natW = JaredFront.elt.naturalWidth;
+    let natH = JaredFront.elt.naturalHeight;
+    JaredFront.size(natW * scale, natH * scale);
     setTimeout(() => {
       jaredLoaded = true;
       positionJared();
@@ -60,17 +59,18 @@ function draw() {
 
   // Always draw the text box
   let boxMargin = 20;
-  let boxHeight = 100;
+  let boxHeight = 150;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
-  let boxY = height / 2 - boxHeight / 2; // Center the box
+  let boxY = jaredY + JaredFront.height + 100;
 
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
-  text(displayText, width / 2, boxY + boxHeight / 2);
+  // Draw the text inside the box, wrapping it within the box width
+  text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
   // Only start typing when `typing` is true
   if (typing && millis() - lastCharTime > typeSpeed) {
@@ -90,7 +90,6 @@ function draw() {
   }
 }
 
-
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   positionJared();
@@ -109,7 +108,7 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts2.length - 1 && !typing) {
-    window.location.href = 'page2.html';
+    window.location.href = 'page3.html';
     return;
   }
 
