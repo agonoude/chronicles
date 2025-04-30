@@ -100,7 +100,7 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html';
+    window.location.href = 'page2.html';
     return;
   }
 
