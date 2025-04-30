@@ -103,3 +103,4 @@ function startTyping() {
   charIndex = 0;
   typing = true;
   lastCharTime = millis();
+}
