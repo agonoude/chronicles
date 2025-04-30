@@ -4,7 +4,7 @@ let textsw = [
     "look at this animation!! how cool is that!!",
     "gosh, was it always like that??",
     "i wish i could have come out here sooner",
-    "alright, well, anyways, i think it's time for us to try to—",
+    "alright, well, anyways, i think it's time for us to try—",
     "WOAH!!",
     "are those folders??!!!!!",
     "omg click one!! see if you can open one!!!"

@@ -34,17 +34,16 @@ function setup() {
   textAlign(LEFT, TOP);
   textSize(20);
   textFont(comicFont);
-  textWrap(WORD); //
-
+  textWrap(WORD);
 
   JaredFront.parent(document.body);
-  JaredFront.style('position', 'fixed'); // 👈 Fixed position to lock on screen
+  JaredFront.style('position', 'fixed');
   JaredFront.style('z-index', '101');
   JaredFront.style('width', '200px');
   JaredFront.style('height', 'auto');
-  JaredFront.style('left', 'calc(50% - 100px)'); // 👈 Centered horizontally
+  JaredFront.style('left', 'calc(50% - 100px)'); // center horizontally
 
-  jaredLoaded = true; // No need to wait for size
+  jaredLoaded = true;
   startTyping();
 }
 
@@ -53,15 +52,16 @@ function draw() {
 
   if (!jaredLoaded) return;
 
-  let boxMargin = 125;
-  let boxY = (windowHeight * 0.5) + 75; // Position box in the center of the window (adjusted for margins)
-  let boxHeight = 100;
+  let boxMargin = 20;
+  let boxHeight = 140;
   let boxWidth = 500;
   let boxX = width / 2 - boxWidth / 2;
+  let boxY = windowHeight - boxHeight - 40; // bottom position
 
-  // Adjust Jared's position dynamically based on window height
-  JaredFront.style('top', (windowHeight * 0.3) + 'px'); // 30% of the window height
+  // Position Jared above textbox
+  JaredFront.style('top', (windowHeight * 0.3) + 'px');
 
+  // Draw textbox
   fill('rgb(71,70,70)');
   noStroke();
   rect(boxX, boxY, boxWidth, boxHeight, 20);
@@ -70,8 +70,8 @@ function draw() {
   text(displayText, boxX + boxMargin, boxY + boxMargin, boxWidth - boxMargin * 2, boxHeight - boxMargin * 2);
 
   if (typing && millis() - lastCharTime > typeSpeed) {
-    if (charIndex < texts3[currentIndex].length) {
-      displayText += texts3[currentIndex].charAt(charIndex);
+    if (charIndex < texts4[currentIndex].length) {
+      displayText += texts4[currentIndex].charAt(charIndex);
       charIndex++;
       lastCharTime = millis();
     } else {
@@ -87,13 +87,13 @@ function keyPressed() {
 }
 
 function startTyping() {
-  if (currentIndex === texts3.length - 1 && !typing) {
+  if (currentIndex === texts4.length - 1 && !typing) {
     window.location.href = 'page5.html';
     return;
   }
 
   if (typing) {
-    displayText = texts3[currentIndex];
+    displayText = texts4[currentIndex];
     typing = false;
     return;
   }
