@@ -1,6 +1,6 @@
 let texts = [
   "jared test3 copy???????????",
-  "man.",
+  "please.",
   "maybe?",
   "okay",
   "i hope so"
@@ -86,19 +86,20 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page3.html';
+    window.location.href = 'page3.html'; // Change to your desired page
     return;
   }
 
+  // If typing is still happening, skip the animation and show full line instantly
   if (typing) {
-    displayText = texts[currentIndex];
+    displayText = texts[currentIndex]; // instantly show full text
     typing = false;
     return;
   }
 
+  // Otherwise, move to next message and start typing
   currentIndex++;
   displayText = "";
   charIndex = 0;
   typing = true;
   lastCharTime = millis();
-}
