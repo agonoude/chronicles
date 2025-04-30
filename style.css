@@ -32,8 +32,8 @@ body {
   
   #sketch-container {
     position: relative;
-    width: 600px;
-    height: 400px;
+    width: 800px; /* match your canvas */
+    height: 600px; /* match your canvas */
+    margin: auto;
   }
-
 
