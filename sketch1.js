@@ -1,6 +1,7 @@
 let texts1 = [
   "jared test1",
-  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'",
+  "hi! i'm jared, ALANNA's personal bot assistant. she made me when she ran out of ideas and 'didn't have her phone because she lost it'. if you'd like for me to move on to my next statement, please press t! :)",
+  "sorry about that. she has control over when i say things.",
   "anywho she wants me to say hi even though i am currently busy 'waving my hands in the air like i just don't care'",
   "would you like to accompany me?!",
   "...pretty please?"
