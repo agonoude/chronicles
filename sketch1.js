@@ -40,13 +40,13 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(20);
   textFont(comicFont);
-
+  textWrap(WORD);
 
   JaredFront.elt.onload = () => {
     let scale = 0.8;
-  let natW = JaredFront.elt.naturalWidth;
-  let natH = JaredFront.elt.naturalHeight;
-  JaredFront.size(natW * scale, natH * scale);
+    let natW = JaredFront.elt.naturalWidth;
+    let natH = JaredFront.elt.naturalHeight;
+    JaredFront.size(natW * scale, natH * scale);
     setTimeout(() => {
       jaredLoaded = true;
       positionJared();
@@ -71,6 +71,7 @@ function draw() {
   rect(boxX, boxY, boxWidth, boxHeight, 20);
 
   fill('white');
+  // Draw the text inside the box
   text(displayText, width / 2, boxY + boxHeight / 2);
 
   // Only start typing when `typing` is true
@@ -90,7 +91,6 @@ function draw() {
     positionJared();
   }
 }
-
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
