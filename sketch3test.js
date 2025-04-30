@@ -27,7 +27,7 @@ function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent(document.body); // Add directly to body, not #sketch-container
   cnv.position(0, 0);
-  cnv.style('position', 'fixed'); // fixed = persistent overlay
+  cnv.style('position', 'absolute'); // fixed = persistent overlay
   cnv.style('z-index', '100');
   cnv.style('pointer-events', 'none');
 
@@ -36,12 +36,12 @@ function setup() {
   textFont(comicFont);
 
   JaredFront.parent(document.body);
-  JaredFront.style('position', 'fixed'); // fixed to stay on top
+  JaredFront.style('position', 'absolute'); // fixed to stay on top
   JaredFront.style('z-index', '101');
   JaredFront.show();
 
   JaredFront.elt.onload = () => {
-    let scale = 0.8;
+    let scale = 0.5;
     let natW = JaredFront.elt.naturalWidth;
     let natH = JaredFront.elt.naturalHeight;
     JaredFront.size(natW * scale, natH * scale);
