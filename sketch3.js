@@ -1,21 +1,9 @@
-//local storage variable for jared's opinion of the player lol
-if (localStorage.getItem('relationshipScore') === null) {
-  localStorage.setItem('relationshipScore', 0);
-}
-
-
-
-
-
-
-
-
 let texts = [
-  "jared test1",
-  "hoi",
-  "yay",
-  "awesome",
-  "this is so fun"
+  "jared test3",
+  "did it work",
+  "maybe?",
+  "okay",
+  "i hope so"
 ];
 
 let currentIndex = 0;
@@ -46,7 +34,7 @@ function setup() {
 }
 
 function draw() {
-  background('black');
+  clear();
 
   // Draw the textbox at the bottom
   fill('rgb(71,70,70)');
@@ -71,7 +59,7 @@ function draw() {
 
 function startTyping() {
   if (currentIndex === texts.length - 1 && !typing) {
-    window.location.href = 'page2.html'; // Change to your desired page
+    window.location.href = 'page3.html'; // Change to your desired page
     return;
   }
 
