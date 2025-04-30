@@ -41,7 +41,9 @@ function setup() {
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
   JaredFront.elt.onload = () => {
-    JaredFront.position(width / 2 - JaredFront.width / 2, 40);
+      JaredFront.size(JaredFront.width * 0.8, JaredFront.height * 0.8);
+      JaredFront.show();
+      JaredFront.position(width / 2 - JaredFront.width / 2+25, 80);
   };
 
   startTyping();
