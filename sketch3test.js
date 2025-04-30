@@ -14,7 +14,7 @@ let lastCharTime = 0;
 let typeSpeed = 50;
 let JaredFront;
 let comicFont;
-let jaredY = 250;
+let jaredY = 275;
 let jaredLoaded = false;
 
 function preload() {
@@ -62,7 +62,7 @@ function draw() {
   let jaredH = JaredFront.height;
   let boxMargin = 100;
   let boxY = jaredY + jaredH + boxMargin;
-  let boxHeight = 100;
+  let boxHeight = 120;
   let boxWidth = 600;
   let boxX = width / 2 - boxWidth / 2;
 
