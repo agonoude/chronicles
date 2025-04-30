@@ -20,28 +20,38 @@ function preload() {
   // loading comic sans bc i literally had to download FONTS for this...lowkey tho i should try turning my handwriting into a font
   comicFont = loadFont('assets/COMIC.TTF');
   JaredFront = createImg('assets/jaredfront.gif')
-  JaredFront.hide;
+  JaredFront.hide();
 }
 
 function setup() {
-  createCanvas(600, 400);
-  textAlign(LEFT, TOP);
-  textSize(20);
-  textFont(comicFont);
-
-  JaredFront.parent('sketch-container');
-  JaredFront.style('position', 'absolute');
-  JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2); // temp — update once dimensions are known
-
-
-
-
-  // Create button
-  button = createButton('Next');
-  button.position(width - 75, height - 50);
-  button.mousePressed(startTyping);
-
-  startTyping(); // Start typing the first message
+  function setup() {
+    let cnv = createCanvas(600, 400);
+    cnv.parent('sketch-container');
+    cnv.style('position', 'absolute');
+    cnv.style('z-index', '1');
+  
+    textAlign(LEFT, TOP);
+    textSize(20);
+    textFont(comicFont);
+  
+    // Setup GIF
+    JaredFront.parent('sketch-container');
+    JaredFront.style('position', 'absolute');
+    JaredFront.style('z-index', '0'); // behind the canvas
+    setTimeout(() => {
+      JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2);
+    }, 100);
+  
+    // Create button
+    button = createButton('Next');
+    button.parent('sketch-container');
+    button.style('position', 'absolute');
+    button.style('z-index', '2'); // on top
+    button.position(width - 75, height - 50);
+    button.mousePressed(startTyping);
+  
+    startTyping(); // Start typing the first message
+  }
 }
 
 function draw() {
