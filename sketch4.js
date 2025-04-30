@@ -88,7 +88,7 @@ function keyPressed() {
 
 function startTyping() {
   if (currentIndex === texts3.length - 1 && !typing) {
-    window.location.href = 'page4.html';
+    window.location.href = 'page5.html';
     return;
   }
 
