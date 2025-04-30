@@ -26,7 +26,6 @@ function preload() {
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.parent(document.body);
-  JaredFront.parent(document.body);
   cnv.position(0, 0);
   cnv.style('position', 'absolute');
   cnv.style('pointer-events', 'none');  
