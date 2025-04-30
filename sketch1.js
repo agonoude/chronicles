@@ -33,18 +33,16 @@ function setup() {
   JaredFront.parent('sketch-container');
   JaredFront.style('position', 'absolute');
   JaredFront.style('z-index', '0');
-  JaredFront.size(150, 150); // Resize smaller
-  JaredFront.elt.onload = () => {
-    JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2 - 50);
-  };
+  JaredFront.size(150, 150); // Resize Jared
+  JaredFront.show(); // Just in case
 
-  // Create button – DO NOT CHANGE this placement
+  // Create button (unchanged)
   button = createButton('Next');
   button.parent('sketch-container');
   button.style('position', 'absolute');
   button.style('z-index', '10');
   button.position(width - 75, height - 50);
-  button.mousePressed(startTyping); // <-- This was missing before
+  button.mousePressed(startTyping);
 
   startTyping();
 }
@@ -52,16 +50,18 @@ function setup() {
 function draw() {
   background('black');
 
-  // Draw text box at bottom
+
+  JaredFront.position(width / 2 - JaredFront.width / 2, height / 2 - JaredFront.height / 2 - 50);
+
+  // Textbox
   fill('rgb(71,70,70)');
   noStroke();
   rect(20, height - 100, width - 40, 80, 20);
 
-  // Draw animated text
+  // Typing text
   fill('white');
   text(displayText, 40, height - 85);
 
-  // Typing effect
   if (typing && millis() - lastCharTime > typeSpeed) {
     if (charIndex < texts[currentIndex].length) {
       displayText += texts[currentIndex].charAt(charIndex);
