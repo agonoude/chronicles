@@ -7,10 +7,19 @@ body{
     background-color: black;
 }
 
+/*jared ascii figure*/
+.smalljared{
+    /*font*/
+    font-size:16;
+    text-align:center;
+
+
+}
+
 #mydiv {
   position: absolute;
   z-index: 9;
-  background-color: #f1f1f1;
+  background-color: #000000;
   text-align: center;
   border: 1px solid #d3d3d3;
   display: none; /* Initially hidden */
@@ -23,9 +32,11 @@ body{
   background-color: #000000;
   color: #fff;
 }
+
+
 </style>
 
-<body>
+<body class="maintheme">
 
 <h1>Draggable DIV Element</h1>
 
@@ -38,12 +49,24 @@ body{
 <div id="mydiv">
   <div id="mydivheader">top bar top bar top bar top bar top bar top bar</div>
 
-  <pre>(o,o)</pre>
-  <pre>:) <3</pre>
+<div class="smalljared">
+  <pre>
+      ,~*
+     <span class="spantest"></span>   
+   \\(o.o)//
+  \\ :  |
+   | ;  |
+   |____|
+   { }{ }
+   | || |
+   {__||__}
+ </pre>          
 
-  <p>Move</p>
-  <p>this</p>
-  <p>DIV</p>
+</div>
+
+
+
+ 
 </div>
 
 <script>
