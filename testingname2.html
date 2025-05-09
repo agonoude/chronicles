@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+</head>
+<body>
+  <h2 id="greeting">Hello!</h2>
+  <a href="index.html">Go back</a>
+
+  <script>
+    const name = localStorage.getItem('userName');
+    if (name) {
+      document.getElementById('greeting').textContent = `Hello, ${name}!`;
+    } else {
+      document.getElementById('greeting').textContent = "Hello!";
+    }
+  </script>
+</body>
+</html>

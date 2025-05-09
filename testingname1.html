@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Name</title>
+</head>
+<body>
+  <h2>Hi, what's your name?</h2>
+  <input type="text" id="nameInput" />
+  <button onclick="saveName()">Submit</button>
+
+  <script>
+    // Clear name when user revisits this page
+    localStorage.removeItem('userName');
+
+    function saveName() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (name) {
+        localStorage.setItem('userName', name);
+        window.location.href = "page2.html"; // Redirect to next page
+      }
+    }
+  </script>
+</body>
+</html>
