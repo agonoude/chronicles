@@ -22,6 +22,7 @@ body{
   background-color: #000000;
   text-align: center;
   border: 1px solid #d3d3d3;
+  color: white;
   display: none; /* Initially hidden */
 }
 
@@ -32,6 +33,32 @@ body{
   background-color: #000000;
   color: #fff;
 }
+
+/*jared dancing*/
+.spantest:before{
+    content:'';
+    animation:jareddance infinite 1s;
+}
+
+@keyframes jareddance {
+    0%{
+        content:'\005C\005C   \002F  \005C  \005C\005C ';
+    }
+
+    33%{
+        content: ' // / \005C  \005C\005C';
+    }
+
+    66%{
+        content: '  // / \005C   //';
+    }
+
+    100%{content:' \005C\005C   \002F  \005C   //'}
+
+}
+/*jared dance done do not touch anything above this*/
+
+
 
 
 </style>
