@@ -6,7 +6,18 @@
 body{
     background-color: black;
 }
-
+.blinkingbottom:before{
+    content:'o';
+    animation:jaredblinkbottom infinite 5s;
+}
+@keyframes jaredblinkbottom {
+    0%{
+        content:'o';
+    }
+    50%{content: '_';}
+    55%{content:'o'}
+    100%{content:'o'}
+}
 #mydiv {
   position: absolute;
   z-index: 9;
@@ -33,7 +44,8 @@ body{
 
 
 
-
+     | / <span class="blinkingtop"></span>        <span class="blinkingtop"></span> \  |
+     |  (<span class="blinkingbottom"></span>)  |   (<span class="blinkingbottom"></span>)   |
 
 
 
@@ -41,7 +53,7 @@ body{
   <div id="mydivheader">top bar top bar top bar top bar top bar top bar</div>
 
 <pre>(o,o)</pre>
-<pre>:) <3</pre>
+<pre>:) <3 </pre>
 
   <p>Move</p>
   <p>this</p>
@@ -51,7 +63,7 @@ body{
 <script>
 
 //Make the DIV element draggagle:
-dragElement(document.getElementById("mydiv"));
+dragElement(document.getElementById("jareddiv"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
